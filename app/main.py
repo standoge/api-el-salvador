@@ -1,5 +1,6 @@
 import uvicorn
-from fastapi import FastAPI
+
+from fastapi import FastAPI, Query, Body
 
 app = FastAPI()
 
@@ -7,20 +8,28 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
-@app.get("")
-def get_departament():
+@app.get("/")
+def get_departament(
+        departament: str = Query(),
+    ):
     ...
 
-@app.put("")
-def update_departament():
+@app.patch("/")
+def update_departament(
+        departament: str = Body(),
+    ):
     ...
 
-@app.get("")
-def get_township():
+@app.get("/")
+def get_township(
+        township: str = Query(),
+    ):
     ...
 
-@app.put("")
-def update_township():
+@app.patch("/")
+def update_township(
+        township: str = Body(),
+    ):
     ...
 
 if __name__ == "__main__":
