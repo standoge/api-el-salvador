@@ -1,6 +1,6 @@
 from pymysql import connect
 
-connection = connect(host=$(),user=$(),passwd=$(),db=$())
+connection = connect(host=$(HOST),user=$(USER),passwd=$(PASS),db=$("el_salvador"))
 
 cursor = connection.cursor()
 
