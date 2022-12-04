@@ -11,25 +11,25 @@ def read_root():
 
 
 # dep is get it from search bar writing its name
-@app.get("/")
+@app.get("/departaments")
 def get_departament(departament: str = Query(min_length=5, max_length=10)):
     ...
 
 
 # dep is updated from <form> UI maybe
-@app.patch("/")
+@app.put("/departaments")
 def update_departament(departament: str = Body()):
     ...
 
 
 # equal than dep
-@app.get("/")
+@app.get("/townships")
 def get_township(township: str = Query(min_length=5, max_length=19)):
     ...
 
 
 # equal than dep
-@app.patch("/")
+@app.put("/townships")
 def update_township(
     township: str = Body(),
 ):

@@ -1,13 +1,16 @@
 import os
-from pymysql import connect
+
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
 
 host = os.environ["HOST"]
 user = os.environ["USER"]
 passwd = os.environ["PASS"]
 
-connection = connect(host=host, user=user, passwd=passwd, db="el_salvador")
+SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
+engine = create_engine()
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-cursor = connection.cursor()
-
-cursor.close()
-connection.close()
+Base = declarative_base()
