@@ -1,7 +1,9 @@
+import os
 import unittest
 import sys
 
-sys.path.insert(0, "/home/doge/development/Python/api/app")
+module_location = os.environ["LOCATION"]
+sys.path.insert(0, module_location)
 
 from main import app
 
