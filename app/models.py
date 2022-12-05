@@ -1,7 +1,7 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
-from .db import Base
+from db import Base
 
 
 class Departament(Base):
@@ -12,7 +12,7 @@ class Departament(Base):
     iso = Column(String, not_null=True)
     zone_id = Column(Integer, ForeignKey("zonesv.id"))
 
-    zone = relationship("Zone", back_populates="departament")
+    zones = relationship("Zone", back_populates="departament")
 
 
 class Zone(Base):
@@ -21,4 +21,4 @@ class Zone(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, not_null=True)
 
-    departament = relationship("Departament", back_populates="zone")
+    departaments = relationship("Departament", back_populates="zone")

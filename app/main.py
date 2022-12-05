@@ -1,8 +1,22 @@
 import uvicorn
 
-from fastapi import FastAPI, Query, Body
+from fastapi import FastAPI, Query, Body, Depends, HTTPException
+from sqlalchemy.orm import Session
+
+import crud
+import models
+import schemas
+from db import SessionLocal, engine
 
 app = FastAPI()
+
+
+def db_connection():
+    db = SessionLocal()
+    try:
+        yield bd
+    finally:
+        db.close()
 
 
 @app.get("/")
@@ -11,9 +25,14 @@ def read_root():
 
 
 # dep is get it from search bar writing its name
-@app.get("/departaments")
-def get_departament(departament: str = Query(min_length=5, max_length=10)):
-    ...
+@app.get("/departaments/{name}", response_model=schemas.Departament)
+def read_departament(name: str, db: Session = Depends(db_connection)):
+
+    db_departament = crud.get_departament(db, name)
+
+    if db_departament is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return db_usertament(db, name)
 
 
 # dep is updated from <form> UI maybe
