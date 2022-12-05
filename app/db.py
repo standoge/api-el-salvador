@@ -5,12 +5,14 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 
-host = os.environ["HOST"]
-user = os.environ["USER"]
-passwd = os.environ["PASS"]
+HOST = os.environ["HOST"]
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
+DB_URL = HOST
+
 engine = create_engine()
+
+# upper 'cause returns a class
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# upper 'cause returns a class
 Base = declarative_base()
