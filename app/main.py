@@ -1,20 +1,10 @@
 import uvicorn
 
-from fastapi import FastAPI, Query, Body, Depends, HTTPException
+from fastapi import FastAPI, Query, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-import crud
-import schemas
-from db import SessionLocal
-
-
-def db_connection():
-    """Generates db connection for aeach request."""
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+import crud, schemas
+from db import db_connection
 
 
 app = FastAPI()
@@ -22,7 +12,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    """Main endpoint"""
 
 
 # dep is get it from search bar writing its name
@@ -48,7 +38,6 @@ def read_departament(name: str, db: Session = Depends(db_connection)):
 @app.get("/townships")
 def read_township(township: str = Query(min_length=5, max_length=19)):
     """Returns towships data in json format."""
-    pass
 
 
 # equal than dep
