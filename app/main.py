@@ -4,7 +4,6 @@ from fastapi import FastAPI, Query, Body, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 import crud
-import models
 import schemas
 from db import SessionLocal
 

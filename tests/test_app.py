@@ -1,6 +1,4 @@
-import os
 import unittest
-import sys
 
 from app.main import app
 
