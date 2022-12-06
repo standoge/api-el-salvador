@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 import crud
 import models
 import schemas
-from db import SessionLocal, engine
+from db import SessionLocal
 
 app = FastAPI()
 
@@ -14,7 +14,7 @@ app = FastAPI()
 def db_connection():
     db = SessionLocal()
     try:
-        yield bd
+        yield db
     finally:
         db.close()
 
@@ -32,7 +32,7 @@ def read_departament(name: str, db: Session = Depends(db_connection)):
 
     if db_departament is None:
         raise HTTPException(status_code=404, detail="User not found")
-    return db_usertament(db, name)
+    return db_departament
 
 
 # dep is updated from <form> UI maybe
@@ -57,4 +57,4 @@ def update_township(
 
 if __name__ == "__main__":
 
-    uvicorn.run("main:app")
+    uvicorn.run("main:app", reload=True)

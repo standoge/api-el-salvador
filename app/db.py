@@ -7,9 +7,7 @@ from sqlalchemy.orm import sessionmaker
 
 HOST = os.environ["HOST"]
 
-DB_URL = HOST
-
-engine = create_engine()
+engine = create_engine(HOST)
 
 # upper 'cause returns a class
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

@@ -6,5 +6,7 @@ import schemas
 
 def get_departament(db: Session, dp_name: str):
     return (
-        db.query(models.Departament).filter(models.Departament.name == dp_name).first()
+        db.query(models.Departament)
+        .filter(models.Departament.depname == dp_name)
+        .first()
     )
