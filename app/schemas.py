@@ -11,8 +11,8 @@ class Departament(BaseModel):
 
 
 class Township(BaseModel):
-    name: str
-    departament_id: int
+    munname: str
+    depsv_id: int
 
     class Config:
         orm_mode = True

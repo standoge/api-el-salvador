@@ -17,7 +17,7 @@ class Township(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     munname = Column(String)
-    zonesv_id = Column(Integer, ForeignKey("depsv.id"))
+    depsv_id = Column(Integer, ForeignKey("depsv.id"))
 
 
 class Zone(Base):
