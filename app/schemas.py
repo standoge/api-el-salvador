@@ -19,9 +19,7 @@ class Township(BaseModel):
 
     class Config:
         orm_mode = True
-        schema_extra = {
-            "example": {"munname": "Colon", "devps_id": 3}
-        }
+        schema_extra = {"example": {"munname": "Colon", "devps_id": 3}}
 
 
 class Zone(BaseModel):
@@ -29,6 +27,4 @@ class Zone(BaseModel):
 
     class Config:
         orm_mode = True
-        schema_extra = {
-            "example": {"zonename": "Occidental"}
-        }
+        schema_extra = {"example": {"zonename": "Occidental"}}

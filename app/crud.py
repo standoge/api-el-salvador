@@ -1,9 +1,9 @@
 from fastapi import HTTPException, Response
-from sqlalchemy.orm import Session
 from fastapi.encoders import jsonable_encoder
-import json
+from sqlalchemy.orm import Session
 
 import models
+import json
 
 
 def error_message(request):
@@ -41,7 +41,7 @@ def get_departament(db: Session, dp_name: str):
 
 @error_message
 def get_township(db: Session, mun_name: str):
-    """Returns the first match with tws_name argument in munsv table."""
+    """Returns the first match with mun_name argument in munsv table."""
     query_response = (
         db.query(models.Township).filter(models.Township.munname == mun_name).first()
     )
@@ -55,4 +55,5 @@ def get_zone(db: Session, zone_name: str):
     query_response = (
         db.query(models.Zone).filter(models.Zone.zonename == zone_name).first()
     )
+
     return query_response
