@@ -1,6 +1,5 @@
 from fastapi import HTTPException, Response
 from sqlalchemy.orm import Session
-from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 import json
 
@@ -16,7 +15,6 @@ def error_message(request):
         if response is None:
             raise HTTPException(status_code=404, detail="That values doesn't exists")
         
-        """Pase model to JSON serializable"""
         json_response = Response(
             content = json.dumps(
                 jsonable_encoder(response), 
