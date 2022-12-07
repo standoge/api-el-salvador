@@ -16,3 +16,10 @@ class Township(BaseModel):
 
     class Config:
         orm_mode = True
+
+class Zone(BaseModel):
+    zonename: str 
+
+    class Config:
+        orm_mode = True
+        
