@@ -29,3 +29,6 @@ class Zone(BaseModel):
 
     class Config:
         orm_mode = True
+        schema_extra = {
+            "example": {"zonename": "Occidental"}
+        }
