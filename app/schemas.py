@@ -8,6 +8,9 @@ class Departament(BaseModel):
 
     class Config:
         orm_mode = True
+        schema_extra = {
+            "example": {"depname": "San Salvador", "zonesv_id": 2, "isocode": "SV-SS"}
+        }
 
 
 class Township(BaseModel):
@@ -17,9 +20,9 @@ class Township(BaseModel):
     class Config:
         orm_mode = True
 
+
 class Zone(BaseModel):
-    zonename: str 
+    zonename: str
 
     class Config:
         orm_mode = True
-        

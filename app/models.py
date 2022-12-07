@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 
 from db import Base
 
+
 class Departament(Base):
     __tablename__ = "depsv"
 
@@ -13,6 +14,7 @@ class Departament(Base):
     muns = relationship("Township", lazy="joined", back_populates="departament")
     zone = relationship("Zone", lazy="joined", back_populates="departaments")
 
+
 class Township(Base):
     __tablename__ = "munsv"
 
@@ -20,7 +22,6 @@ class Township(Base):
     munname = Column(String)
     depsv_id = Column(Integer, ForeignKey("depsv.id"), nullable=False)
     departament = relationship("Departament", lazy="joined", back_populates="muns")
-
 
 
 class Zone(Base):
