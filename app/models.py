@@ -11,11 +11,11 @@ class Departament(Base):
     depname = Column(String)
     isocode = Column(String)
     zonesv_id = Column(Integer, ForeignKey("zonesv.id"))
-    muns = relationship("Township", lazy="joined", back_populates="departament")
+    muns = relationship("Municipality", lazy="joined", back_populates="departament")
     zone = relationship("Zone", lazy="joined", back_populates="departaments")
 
 
-class Township(Base):
+class Municipality(Base):
     __tablename__ = "munsv"
 
     id = Column(Integer, primary_key=True, index=True)

@@ -19,7 +19,7 @@ class TestApp(unittest.TestCase):
 
     def test_read_municipality(self):
         """Test to check if municipalities endpoint is responding."""
-        response = requests.get(LOCAL_HOST + "/townships/Colon")
+        response = requests.get(LOCAL_HOST + "/municipalities/Colon")
         self.assertEqual(response.json()["munname"], "Colón")
 
 

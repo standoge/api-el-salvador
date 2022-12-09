@@ -13,7 +13,7 @@ class Departament(BaseModel):
         }
 
 
-class Township(BaseModel):
+class Municipality(BaseModel):
     munname: str
     depsv_id: int
 

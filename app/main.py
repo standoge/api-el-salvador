@@ -24,12 +24,12 @@ def read_departament(dep_name: str, db: Session = Depends(db_connection)):
     return db_departament
 
 
-@app.get("/townships/{mun_name}", response_model=schemas.Township)
-def read_township(mun_name: str, db: Session = Depends(db_connection)):
+@app.get("/municipalities/{mun_name}", response_model=schemas.Municipality)
+def read_municipality(mun_name: str, db: Session = Depends(db_connection)):
     """Returns towships data in json format."""
 
-    db_township = crud.get_township(db, mun_name)
-    return db_township
+    db_municipality = crud.get_municipality(db, mun_name)
+    return db_municipality
 
 
 @app.get("/zones/{zone_name}", response_model=schemas.Zone)

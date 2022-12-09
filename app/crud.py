@@ -40,10 +40,10 @@ def get_departament(db: Session, dp_name: str):
 
 
 @error_message
-def get_township(db: Session, mun_name: str):
+def get_municipality(db: Session, mun_name: str):
     """Returns the first match with mun_name argument in munsv table."""
     query_response = (
-        db.query(models.Township).filter(models.Township.munname == mun_name).first()
+        db.query(models.Municipality).filter(models.Municipality.munname == mun_name).first()
     )
 
     return query_response
