@@ -10,8 +10,8 @@ class Departament(BaseModel):
         orm_mode = True
         schema_extra = {
             "example": {
-                "isocode": "SV-SS",
                 "depname": "San Salvador",
+                "isocode": "SV-SS",
                 "id": 6,
                 "zonesv_id": 2,
                 "zone": {"zonename": "Central", "id": 2},
@@ -28,15 +28,15 @@ class Municipality(BaseModel):
         orm_mode = True
         schema_extra = {
             "example": {
-                "id": 132,
                 "depsv_id": 4,
+                "id": 132,
                 "munname": "Colón",
                 "departament": {
                     "isocode": "SV-LI",
                     "depname": "La Libertad",
                     "id": 4,
                     "zonesv_id": 2,
-                    "zone": {"id": 2, "zonename": "Central"},
+                    "zone": {"zonename": "Central", "id": 2},
                 },
             }
         }
