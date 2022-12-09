@@ -12,8 +12,12 @@ class TestApp(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_read_departament(self):
-        response = requests.get(LOCAL_HOST+"/departaments/San Salvador")
-        self.assertEqual(response.json().depname,"San Salvador" )
+        response = requests.get(LOCAL_HOST + "/departaments/San Salvador")
+        self.assertEqual(response.json()["depname"], "San Salvador")
+
+    def test_read_municipality(self):
+        response = requests.get(LOCAL_HOST + "/townships/Colon")
+        self.assertEqual(response.json()["munname"], "Colón")
 
 
 if __name__ == "__main__":
