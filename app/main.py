@@ -35,6 +35,7 @@ def read_township(mun_name: str, db: Session = Depends(db_connection)):
 @app.get("/zones/{zone_name}", response_model=schemas.Zone)
 def read_zone(zone_name: str, db: Session = Depends(db_connection)):
     """Returns zone data in json format"""
+
     db_zone = crud.get_zone(db, zone_name)
     return db_zone
 
