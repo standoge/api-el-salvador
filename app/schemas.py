@@ -15,7 +15,7 @@ class Departament(BaseModel):
                 "id": 6,
                 "zonesv_id": 2,
                 "zone": {"zonename": "Central", "id": 2},
-                "muns": [{"depsv_id": 6, "id": 200, "munname": "Aguilares"}, {...}],
+                "muns": [{"depsv_id": 6, "id": 200, "munname": "Aguilares"}, {"..."}],
             }
         }
 
@@ -47,18 +47,21 @@ class Zone(BaseModel):
 
     class Config:
         orm_mode = True
-        schema_extra = {"example": {
-  "id": 1,
-  "zonename": "Occidental",
-  "departaments": [
-    {
-      "isocode": "SV-AH",
-      "depname": "Ahuachapán",
-      "id": 1,
-      "zonesv_id": 1,
-      "muns": [
-        {
-          "munname": "Ahuachapán",
-          "id": 1,
-          "depsv_id": 1
-        },]}
+        schema_extra = {
+            "example": {
+                "id": 1,
+                "zonename": "Occidental",
+                "departaments": [
+                    {
+                        "isocode": "SV-AH",
+                        "depname": "Ahuachapán",
+                        "id": 1,
+                        "zonesv_id": 1,
+                        "muns": [
+                            {"munname": "Ahuachapán", "id": 1, "depsv_id": 1},
+                            {"..."},
+                        ],
+                    },
+                ],
+            }
+        }
