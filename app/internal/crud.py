@@ -53,7 +53,7 @@ def get_municipality(db: Session, mun_name: str):
 
 @error_message
 def get_zone(db: Session, zone_name: str):
-    "Returns the first match with zone_name argument in zonesv table."
+    """Returns the first match with zone_name argument in zonesv table."""
     query_response = (
         db.query(models.Zone).filter(models.Zone.zonename == zone_name).first()
     )

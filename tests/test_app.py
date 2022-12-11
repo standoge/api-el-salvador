@@ -1,12 +1,26 @@
-import unittest
 from fastapi.testclient import TestClient
-
-LOCAL_HOST = "http://localhost:8000"
 
 from app.main import app
 
 client = TestClient(app)
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_read_main():
+    """Test root endpoint"""
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"Hello": "From FastAPI"}
+
+
+def test_departament():
+    """Test status code & get request for dep endpoint"""
+    response = client.get("/departaments/San Salvador")
+    assert response.status_code == 200
+    assert response.json()["depname"] == "San Salvador"
+
+
+def test_municipality():
+    """Test status code & get request for mun endpoint"""
+    response = client.get("/municipalities/Colon")
+    assert response.status_code == 200
+    assert response.json()["munname"] == "Colón"
