@@ -1,13 +1,15 @@
 import uvicorn
 
-from fastapi import FastAPI, Depends
-from sqlalchemy.orm import Session
-
-import crud, schemas
-from db import db_connection
+from fastapi import FastAPI
+from app.routers import departaments, municipalities, zones
 
 
 app = FastAPI()
+
+
+app.include_router(departaments.router)
+app.include_router(municipalities.router)
+app.include_router(zones.router)
 
 
 @app.get("/")
@@ -16,30 +18,6 @@ def read_root():
     return {"Hello": "From FastAPI"}
 
 
-@app.get("/departaments/{dep_name}", response_model=schemas.Departament)
-def read_departament(dep_name: str, db: Session = Depends(db_connection)):
-    """Returns departaments data in json format."""
+# if __name__ == "__main__":
 
-    db_departament = crud.get_departament(db, dep_name)
-    return db_departament
-
-
-@app.get("/municipalities/{mun_name}", response_model=schemas.Municipality)
-def read_municipality(mun_name: str, db: Session = Depends(db_connection)):
-    """Returns towships data in json format."""
-
-    db_municipality = crud.get_municipality(db, mun_name)
-    return db_municipality
-
-
-@app.get("/zones/{zone_name}", response_model=schemas.Zone)
-def read_zone(zone_name: str, db: Session = Depends(db_connection)):
-    """Returns zone data in json format"""
-
-    db_zone = crud.get_zone(db, zone_name)
-    return db_zone
-
-
-if __name__ == "__main__":
-
-    uvicorn.run("main:app", reload=True)
+    # uvicorn.run("main:app", reload=True)
