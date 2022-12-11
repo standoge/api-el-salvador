@@ -7,7 +7,7 @@ from app.internal.db import db_connection
 router = APIRouter()
 
 
-@router.get("/zones/{zone_name}", response_model=schemas.Zone, tags=["zones"])
+@router.get("/zones/{zone_name}", response_model=schemas.Zone, tags=["ZONES"])
 def read_zone(zone_name: str, db: Session = Depends(db_connection)):
     """Returns zone data in json format"""
 

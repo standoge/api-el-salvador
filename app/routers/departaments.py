@@ -10,7 +10,7 @@ router = APIRouter()
 @router.get(
     "/departaments/{dep_name}",
     response_model=schemas.Departament,
-    tags=["departaments"],
+    tags=["DEPARTAMENTS"],
 )
 def read_departament(dep_name: str, db: Session = Depends(db_connection)):
     """Returns departaments data in json format."""

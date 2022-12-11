@@ -10,7 +10,7 @@ router = APIRouter()
 @router.get(
     "/municipalities/{mun_name}",
     response_model=schemas.Municipality,
-    tags=["municipalities"],
+    tags=["MUNICIPALITIES"],
 )
 def read_municipality(mun_name: str, db: Session = Depends(db_connection)):
     """Returns towships data in json format."""
