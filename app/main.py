@@ -1,5 +1,3 @@
-import uvicorn
-
 from fastapi import FastAPI
 from app.routers import departaments, municipalities, zones
 
@@ -7,6 +5,7 @@ from app.routers import departaments, municipalities, zones
 app = FastAPI()
 
 
+# routes
 app.include_router(departaments.router)
 app.include_router(municipalities.router)
 app.include_router(zones.router)
@@ -16,8 +15,3 @@ app.include_router(zones.router)
 def read_root():
     """Main endpoint"""
     return {"Hello": "From FastAPI"}
-
-
-# if __name__ == "__main__":
-
-    # uvicorn.run("main:app", reload=True)
