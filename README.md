@@ -4,7 +4,7 @@
 
 An API to make queries about El Salvador departaments and its municipalities. This is used for [api-El-Salvador-UI](https://github.com/caeher/api-El-Salvador-UI) as backend.
 
-## Source :card_index:
+## Source :books:
 
 Departaments with its municipalities were taken from [DepMun-El-Salvador](https://github.com/SamBurgos/DepMun-El-Salvador).
 
@@ -22,9 +22,9 @@ After requirements installation check if all is working:
 ```Python
 pytest
 ```
-Start server:
+then, start server:
 ```
 uvicorn app.main:app --reload
 ```
 
-Enjoy :bammboo: ~
+Enjoy :bamboo: ~
