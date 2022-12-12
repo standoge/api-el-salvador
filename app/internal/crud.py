@@ -44,7 +44,21 @@ def get_municipality(db: Session, mun_name: str):
     """Returns the first match with mun_name argument in munsv table."""
     query_response = (
         db.query(models.Municipality)
-        .filter(models.Municipality.munname == mun_name)
+        .filter(models.Municipality.munname.like(f"{mun_name}%"))
+        .all()
+    )
+
+    return query_response
+
+
+def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
+    """"""
+    query_response = (
+        db.query(models.Municipality)
+        .filter(
+            models.Municipality.munname.like(mun_name)
+            and models.Departament.depname == dep_name
+        )
         .first()
     )
 

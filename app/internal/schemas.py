@@ -15,7 +15,7 @@ class Departament(BaseModel):
                 "id": 6,
                 "zonesv_id": 2,
                 "zone": {"zonename": "Central", "id": 2},
-                "muns": [{"depsv_id": 6, "id": 200, "munname": "Aguilares"}, {"..."}]
+                "muns": [{"depsv_id": 6, "id": 200, "munname": "Aguilares"}, {"..."}],
             }
         }
 
@@ -59,7 +59,7 @@ class Zone(BaseModel):
                         "zonesv_id": 1,
                         "muns": [
                             {"munname": "Ahuachapán", "id": 1, "depsv_id": 1},
-                            {"..."}
+                            {"..."},
                         ],
                     },
                 ],
