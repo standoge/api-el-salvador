@@ -56,8 +56,8 @@ def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
     query_response = (
         db.query(models.Municipality)
         .filter(
-            models.Municipality.munname.like(mun_name)
-            and models.Departament.depname == dep_name
+            models.Municipality.munname.like(f"{mun_name}%"),
+            models.Municipality.departament.has(models.Departament.depname == dep_name),
         )
         .first()
     )
