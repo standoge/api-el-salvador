@@ -51,6 +51,7 @@ def get_municipality(db: Session, mun_name: str):
     return query_response
 
 
+@error_message
 def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
     """"""
     query_response = (

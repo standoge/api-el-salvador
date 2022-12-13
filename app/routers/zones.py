@@ -7,7 +7,8 @@ from app.internal.db import db_connection
 router = APIRouter()
 
 
-@router.get("/zones/{zone_name}", response_model=schemas.Zone, tags=["ZONES"])
+# this functions keeps the same indentation due Black formatter
+@router.get(path="/zones/{zone_name}", response_model=schemas.Zone, tags=["ZONES"])
 def read_zone(zone_name: str, db: Session = Depends(db_connection)):
     """Returns zone data in json format"""
 
