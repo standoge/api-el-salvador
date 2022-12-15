@@ -26,6 +26,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Format code
+      run: black .
     - name: Test with pytest
       run: doppler run -- pytest
       env:
