@@ -25,3 +25,10 @@ def test_municipality():
     assert response.status_code == 200
     # here reponse.json() is an array, so is needed specify by index as first element
     assert response.json()[0]["munname"] == "Colón"
+
+def test_zipcodes():
+    """Test status code & get request for scrapper endpoint"""
+    response = client.get("/scrapper/la_paz")
+    assert response.status_code == 200
+    # here reponse.json() is a dict, so is needed specify by key
+    assert response.json()["Zacatecoluca"] == "01601"
