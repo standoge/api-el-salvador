@@ -1,16 +1,15 @@
 [![Test API](https://github.com/standoge/api-El-Salvador/actions/workflows/testing.yml/badge.svg)](https://github.com/standoge/api-El-Salvador/actions/workflows/testing.yml)
 
-# Departaments and Municipalities of El Salvador
+# Departments and Municipalities of El Salvador
 
-An API to make queries about El Salvador departaments and its municipalities, incluiding their zip codes. This is used for [api-el-salvador-ui](https://github.com/caeher/api-El-Salvador-UI) as backend.
+An API to make queries about El Salvador departaments and its municipalities, incluiding their zip codes developed with [FastAPI](https://fastapi.tiangolo.com/). This is used for [api-el-salvador-ui](https://github.com/caeher/api-El-Salvador-UI) as backend.
 
 ## How to use :ringed_planet:
 You can consume it from this [url](https://api-el-salvador-production.up.railway.app/). Just check the documentation at the `https://api-el-salvador-production.up.railway.app/docs` endpoint to learn how to use it and its endpoints.
-<img src="https://i.imgur.com/1vBqKZd.png">
 
 ## Local 🏠
 
-If you want use it locally read bellow.
+If you want to use it locally, read bellow.
 
 ### Requirements:
 
