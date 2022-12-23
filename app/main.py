@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import departaments, municipalities, zones, scraper
+from app.routers import departments, municipalities, zones, scraper
 
 app = FastAPI()
 
@@ -13,7 +13,7 @@ app.add_middleware(
 )
 
 # routes
-app.include_router(departaments.router)
+app.include_router(departments.router)
 app.include_router(municipalities.router)
 app.include_router(zones.router)
 app.include_router(scraper.router)

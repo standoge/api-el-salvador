@@ -14,7 +14,7 @@ def test_read_main():
 
 def test_departament():
     """Test status code & get request for dep endpoint"""
-    response = client.get("/departaments/San Salvador")
+    response = client.get("/departments/San Salvador")
     assert response.status_code == 200
     assert response.json()["depname"] == "San Salvador"
 

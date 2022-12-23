@@ -26,12 +26,12 @@ def error_message(request):
 
 
 @error_message
-def get_departament(db: Session, dp_name: str):
+def get_department(db: Session, dp_name: str):
     """Returns the first match with dp_name argument in depsv table."""
     query_response = (
-        db.query(models.Departament)
+        db.query(models.Department)
         .filter(
-            models.Departament.depname == dp_name,
+            models.Department.depname == dp_name,
         )
         .first()
     )
@@ -58,7 +58,7 @@ def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
         db.query(models.Municipality)
         .filter(
             models.Municipality.munname.like(f"{mun_name}%"),
-            models.Municipality.departament.has(models.Departament.depname == dep_name),
+            models.Municipality.department.has(models.Department.depname == dep_name),
         )
         .first()
     )

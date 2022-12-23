@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class Departament(BaseModel):
+class Department(BaseModel):
     depname: str
     zonesv_id: int
     isocode: str
