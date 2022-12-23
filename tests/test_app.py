@@ -12,7 +12,7 @@ def test_read_main():
     assert response.json() == {"Hello": "From FastAPI"}
 
 
-def test_departament():
+def test_department():
     """Test status code & get request for dep endpoint"""
     response = client.get("/departments/San Salvador")
     assert response.status_code == 200
@@ -28,8 +28,14 @@ def test_municipality():
 
 
 def test_zipcodes():
-    """Test status code & get request for scraper endpoint"""
-    response = client.get("/scraper/la_paz")
+    """Test status code & get request for zipcodes scraper endpoint"""
+    response = client.get("/scraper/zipcodes/la_paz")
     assert response.status_code == 200
     # here reponse.json() is a dict, so is needed specify by key
     assert response.json()["Zacatecoluca"] == "01601"
+
+
+def test_images():
+    """Test status code & get request for images scraper endpoint"""
+    response = client.get("/scraper/images/usulutan")
+    assert response.status_code == 200

@@ -22,6 +22,8 @@ def get_images(dep_name: str):
     """Return images url with metadata from Google by department."""
     params = {
         "q": f"El Salvador {dep_name}",
+        "gl": "sv",
+        "hl": "es-419",
         "tbm": "isch",
         "ijin": 0,
         "api_key": G_KEY,
