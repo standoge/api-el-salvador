@@ -20,7 +20,7 @@ def read_municipality(
     db: Session = Depends(db_connection),
     departament: Optional[str] = Query(default=None, min_length=6, max_length=12),
 ):
-    """Returns towships data in json format."""
+    """Return municipalities data in json format."""
 
     if departament is not None:
         db_municipality_by_dp = crud.get_municipality_by_dep(db, mun_name, departament)
