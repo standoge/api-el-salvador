@@ -21,7 +21,6 @@ def read_municipality(
     departament: Optional[str] = Query(default=None, min_length=6, max_length=12),
 ):
     """Return municipalities data in json format."""
-
     if departament is not None:
         db_municipality_by_dp = crud.get_municipality_by_dep(db, mun_name, departament)
         return db_municipality_by_dp
