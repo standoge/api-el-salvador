@@ -27,7 +27,7 @@ def error_message(request):
 
 @error_message
 def get_department(db: Session, dp_name: str):
-    """Returns the first match with dp_name argument in depsv table."""
+    """Return the first match with dp_name argument in depsv table."""
     query_response = (
         db.query(models.Department)
         .filter(
@@ -41,7 +41,7 @@ def get_department(db: Session, dp_name: str):
 
 @error_message
 def get_municipality(db: Session, mun_name: str):
-    """Returns the first match with mun_name argument in munsv table."""
+    """Return the first match with mun_name argument in munsv table."""
     query_response = (
         db.query(models.Municipality)
         .filter(models.Municipality.munname.like(f"{mun_name}%"))
@@ -53,7 +53,7 @@ def get_municipality(db: Session, mun_name: str):
 
 @error_message
 def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
-    """"""
+    """Return the first match with mun_name in munsv table."""
     query_response = (
         db.query(models.Municipality)
         .filter(
@@ -68,7 +68,7 @@ def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
 
 @error_message
 def get_zone(db: Session, zone_name: str):
-    """Returns the first match with zone_name argument in zonesv table."""
+    """Return the first match with zone_name argument in zonesv table."""
     query_response = (
         db.query(models.Zone).filter(models.Zone.zonename == zone_name).first()
     )
