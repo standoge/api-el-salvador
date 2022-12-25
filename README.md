@@ -17,10 +17,9 @@ Install dependencies:
 
 ```
 pip install -r requirements
-
 ```
 
-It uses `pymysql` as a connector for `MySQL` scripts with El Salvador information from the repository mentioned above, so remember to change the `DB_HOST` variable content in `internal/db.py` file to your instance of MySQL with that connector.
+> It uses `pymysql` as a connector for `MySQL` scripts with El Salvador information from the repository mentioned above, so remember to change the `DB_HOST` variable content in `internal/db.py` file to your instance of MySQL with that connector.
 
 ### Test:
 
@@ -28,18 +27,17 @@ After requirements installation check if all is working. This will checks if you
 
 ```
 pytest
-
 ```
 
 then, start server:
 
 ```
 uvicorn app.main:app --reload
-
 ```
 
 ## Source :books:
 
 Departaments with its municipalities were taken from [DepMun-El-Salvador](https://github.com/SamBurgos/DepMun-El-Salvador), check it.
 
-Enjoy :bamboo: ~
+----
+Enjoy :bamboo: 
