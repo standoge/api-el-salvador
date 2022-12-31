@@ -13,6 +13,7 @@ G_KEY = os.environ["G_KEY"]
 
 def key_error(operation):
     """Handle KeyError exception for values that aren't in Endpoint enum."""
+
     @wraps(operation)
     def wrapper(**kwargs):
         try:
