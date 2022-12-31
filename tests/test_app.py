@@ -43,8 +43,15 @@ def test_zipcodes():
     assert response.json()["Zacatecoluca"] == "01601"
 
 
-@pytest.mark.skip(reason="This test consume request attempts")
-def test_images():
+def test_image_bing():
     """Test status code & get request for images scraper endpoint"""
     response = client.get("/scraper/images/usulutan")
+    assert response.status_code == 200
+    assert response.json() is not [] or None
+
+
+@pytest.mark.skip(reason="This test consume request attempts")
+def test_images_google():
+    """Test status code & get request for images scraper endpoint"""
+    response = client.get("/scraper/images/usulutan&engine=google")
     assert response.status_code == 200

@@ -12,12 +12,14 @@ G_KEY = os.environ["G_KEY"]
 
 
 def key_error(operation):
+    """Handle KeyError exception for values that aren't in Endpoint enum."""
     @wraps(operation)
     def wrapper(**kwargs):
         try:
             return operation(**kwargs)
         except KeyError:
             return {"error": "department not found"}
+
     return wrapper
 
 
@@ -39,9 +41,9 @@ def get_images(dep_name: str):
 
 @router.get(path="/scraper/images/{dep_name}", tags=["SCRAPER"])
 @key_error
-def get_images(dep_name: str, engine:str = Query(default=None)):
+def get_images(dep_name: str, engine: str = Query(default=None)):
     """Return images url with metadata from Bing by department."""
-    if engine is not "google":
+    if engine != "google":
         {"error": "engine not found"}
     results = ImageGoogle(dep_name, G_KEY).images
     return results
