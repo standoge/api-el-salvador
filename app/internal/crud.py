@@ -6,7 +6,7 @@ import app.internal.models as models
 import json
 
 
-def error_message(request):
+def query_error(request):
     """Raise exception when path argument isn't in db"""
 
     def wrapper(*args):
@@ -25,7 +25,7 @@ def error_message(request):
     return wrapper
 
 
-@error_message
+@query_error
 def get_department(db: Session, dp_name: str):
     """Return the first match with dp_name argument in depsv table."""
     query_response = (
@@ -39,7 +39,7 @@ def get_department(db: Session, dp_name: str):
     return query_response
 
 
-@error_message
+@query_error
 def get_municipality(db: Session, mun_name: str):
     """Return the first match with mun_name argument in munsv table."""
     query_response = (
@@ -51,7 +51,7 @@ def get_municipality(db: Session, mun_name: str):
     return query_response
 
 
-@error_message
+@query_error
 def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
     """Return the first match with mun_name in munsv table."""
     query_response = (
@@ -66,7 +66,7 @@ def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
     return query_response
 
 
-@error_message
+@query_error
 def get_zone(db: Session, zone_name: str):
     """Return the first match with zone_name argument in zonesv table."""
     query_response = (
