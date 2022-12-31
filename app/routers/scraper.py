@@ -34,7 +34,7 @@ def get_zipcodes(dep_name: str):
 
 @router.get(path="/scraper/images/{dep_name}", tags=["SCRAPER"])
 @key_error
-def get_images(dep_name: str):
+def get_images_bing(dep_name: str):
     """Return images url with metadata from Bing by department."""
     results = ImageBing(dep_name).images
     return results
@@ -42,9 +42,10 @@ def get_images(dep_name: str):
 
 @router.get(path="/scraper/images/{dep_name}", tags=["SCRAPER"])
 @key_error
-def get_images(dep_name: str, engine: str = Query(default=None)):
+def get_images_google(dep_name: str, engine: str = Query(default=None)):
     """Return images url with metadata from Bing by department."""
-    if engine != "google":
+    if engine == "google":
+        results = ImageGoogle(dep_name, G_KEY).images
+        return results
+    else:
         {"error": "engine not found"}
-    results = ImageGoogle(dep_name, G_KEY).images
-    return results
