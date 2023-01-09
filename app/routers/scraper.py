@@ -11,21 +11,7 @@ router = APIRouter()
 G_KEY = os.environ["G_KEY"]
 
 
-def key_error(operation):
-    """Handle KeyError exception for values that aren't in Endpoint enum."""
-
-    @wraps(operation)
-    def wrapper(**kwargs):
-        try:
-            return operation(**kwargs)
-        except KeyError:
-            return {"error": "department not found"}
-
-    return wrapper
-
-
 @router.get(path="/scraper/zipcodes/{dep_name}", tags=["SCRAPER"])
-@key_error
 def get_zipcodes(dep_name: str):
     """Return municipalities by department and their zip codes in json format."""
     departament_zipcode = Zipcode(Endpoint[f"{dep_name}"].value)
@@ -33,10 +19,9 @@ def get_zipcodes(dep_name: str):
 
 
 @router.get(path="/scraper/images/{dep_name}", tags=["SCRAPER"])
-@key_error
 def get_images(dep_name: str, engine: str = Query(default=None)):
     """Return images url with metadata from Bing or Google engine by department."""
-    if engine != None:
+    if engine is not None:
         results = ImageGoogle(dep_name, G_KEY).images
         return results
     results = ImageBing(dep_name).images
