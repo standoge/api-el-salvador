@@ -1,31 +1,41 @@
-from fastapi import HTTPException, Response
 from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 
 import app.internal.models as models
-import json
 
 
-def query_error(request):
-    """Raise exception when path argument isn't in db"""
+# def query_error(request):
+#     """Raise exception when path argument isn't in db"""
+
+#     def wrapper(*args):
+#         """Wrap query db function to handle exception"""
+#         response = request(*args)
+#         if response is None:
+#             raise HTTPException(status_code=404, detail="That values doesn't exists")
+
+#         json_response = Response(
+#             content=json.dumps(jsonable_encoder(response), indent=4, default=str),
+#             media_type="application/json",
+#         )
+
+#         return json_response
+
+#     return wrapper
+
+
+def query_encoder(request):
+    """Transform sqlalchemy object returned by query to json"""
 
     def wrapper(*args):
-        """Wrap query db function to handle exception"""
-        response = request(*args)
-        if response is None:
-            raise HTTPException(status_code=404, detail="That values doesn't exists")
-
-        json_response = Response(
-            content=json.dumps(jsonable_encoder(response), indent=4, default=str),
-            media_type="application/json",
-        )
-
-        return json_response
+        """Logic to make transformation on functions"""
+        query_result = request(*args)
+        return JSONResponse(status_code=200, content=jsonable_encoder(query_result))
 
     return wrapper
 
 
-@query_error
+@query_encoder
 def get_department(db: Session, dp_name: str):
     """Return the first match with dp_name argument in depsv table."""
     query_response = (
@@ -39,7 +49,7 @@ def get_department(db: Session, dp_name: str):
     return query_response
 
 
-@query_error
+@query_encoder
 def get_municipality(db: Session, mun_name: str):
     """Return the first match with mun_name argument in munsv table."""
     query_response = (
@@ -51,7 +61,7 @@ def get_municipality(db: Session, mun_name: str):
     return query_response
 
 
-@query_error
+@query_encoder
 def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
     """Return the first match with mun_name in munsv table."""
     query_response = (
@@ -66,7 +76,7 @@ def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
     return query_response
 
 
-@query_error
+@query_encoder
 def get_zone(db: Session, zone_name: str):
     """Return the first match with zone_name argument in zonesv table."""
     query_response = (

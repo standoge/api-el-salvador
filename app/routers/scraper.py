@@ -1,5 +1,4 @@
 import os
-from functools import wraps
 
 from fastapi import APIRouter, Query
 from souvenir.zipcode import Endpoint, Zipcode
