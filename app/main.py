@@ -4,15 +4,17 @@ from app.routers import departments, municipalities, zones, scraper
 from app.internal.middlewares import SyntaxisErrorMiddleware, TimeMiddleware
 
 app = FastAPI()
+app.title = "Maquilishuat"
+app.version = "1.1.1"
 
 origins = ["*"]
 
+# middlewares
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_methods=["get"],
 )
-
 app.add_middleware(SyntaxisErrorMiddleware)
 app.add_middleware(TimeMiddleware)
 
