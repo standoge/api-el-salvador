@@ -5,25 +5,6 @@ from sqlalchemy.orm import Session
 import app.internal.models as models
 
 
-# def query_error(request):
-#     """Raise exception when path argument isn't in db"""
-
-#     def wrapper(*args):
-#         """Wrap query db function to handle exception"""
-#         response = request(*args)
-#         if response is None:
-#             raise HTTPException(status_code=404, detail="That values doesn't exists")
-
-#         json_response = Response(
-#             content=json.dumps(jsonable_encoder(response), indent=4, default=str),
-#             media_type="application/json",
-#         )
-
-#         return json_response
-
-#     return wrapper
-
-
 def query_encoder(request):
     """Transform sqlalchemy object returned by query to json"""
 
