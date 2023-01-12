@@ -11,7 +11,7 @@ def query_encoder(request):
     def wrapper(*args):
         """Besides check if reponse isn't None or []"""
         query_result = request(*args)
-        if query_result is None or len(query_result) == 0:
+        if query_result is None or [] == 0:
             return JSONResponse(
                 content={"query error": "That value doesn't exists"}, status_code=404
             )
