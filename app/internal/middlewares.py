@@ -10,6 +10,7 @@ class SyntaxisErrorMiddleware(BaseHTTPMiddleware):
     """Handle exceptions related with syntaxis errors."""
 
     async def dispatch(self, request: Request, call_next) -> Response:
+        """Handle ValidationError and KeyError that comes commonly from syntax errors."""
         try:
             response = await call_next(request)
             return response
@@ -25,6 +26,7 @@ class TimeMiddleware(BaseHTTPMiddleware):
     """Calculate the time that takes to process a request."""
 
     async def dispatch(self, request: Request, call_next) -> Response:
+        """Add result to response header."""
         start = time.time()
         response = await call_next(request)
         total_time = time.time() - start
