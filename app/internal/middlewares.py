@@ -12,15 +12,7 @@ class SyntaxisErrorMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next) -> Response:
         try:
             response = await call_next(request)
-
-            if response is None or []:
-                return JSONResponse(
-                    content={"query error": "That value doesn't exists"},
-                    status_code=404,
-                )
-
             return response
-
         except (ValidationError, KeyError):
             return JSONResponse(
                 content={"query error": "That value doesn't exists"}, status_code=404

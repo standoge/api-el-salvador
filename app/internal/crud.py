@@ -9,8 +9,12 @@ def query_encoder(request):
     """Transform sqlalchemy object returned by query to json"""
 
     def wrapper(*args):
-        """Logic to make transformation on functions"""
+        """Besides check if reponse isn't None or []"""
         query_result = request(*args)
+        if query_result is None or len(query_result) == 0:
+            return JSONResponse(
+                content={"query error": "That value doesn't exists"}, status_code=404
+            )
         return JSONResponse(status_code=200, content=jsonable_encoder(query_result))
 
     return wrapper
