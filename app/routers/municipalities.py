@@ -20,7 +20,14 @@ def read_municipality(
     db: Session = Depends(db_connection),
     departament: Optional[str] = Query(default=None, min_length=6, max_length=12),
 ):
-    """Return municipalities data in json format."""
+    """Return municipalities data in json format.
+
+    `Args:`\t
+        **mun_name:** Name of municipalitie to get information about.\t
+        **departament:** Optional argument, some municipalities got equal names across departmnets.
+                     Use it to specify a specifiq municipalitie from specifiq deparment.
+
+    """
     if departament is not None:
         db_municipality_by_dp = crud.get_municipality_by_dep(db, mun_name, departament)
         return db_municipality_by_dp
