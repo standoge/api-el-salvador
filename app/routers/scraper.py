@@ -19,7 +19,13 @@ def get_zipcodes(dep_name: str):
 
 @router.get(path="/scraper/images/{dep_name}", tags=["SCRAPER"])
 def get_images(dep_name: str, engine: str = Query(default=None)):
-    """Return images url with metadata from Bing or Google engine by department."""
+    """Return images url with metadata from Bing or Google engine by department.
+
+    Args:
+        dep_name: Name of department to search images about.
+        engine: Defaults to Bing. To use Google engine you will need an `API_KEY`.
+
+    """
     if engine is not None:
         results = ImageGoogle(dep_name, G_KEY).images
         return results
