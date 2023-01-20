@@ -22,9 +22,9 @@ def read_municipality(
 ):
     """Return municipalities data in json format.
 
-    Args:
-        mun_name: Name of municipalitie to get information about.
-        departament: Optional argument, some municipalities got equal names across departmnets.
+    `Args:`\t
+        **mun_name:** Name of municipalitie to get information about.\t
+        **departament:** Optional argument, some municipalities got equal names across departmnets.
                      Use it to specify a specifiq municipalitie from specifiq deparment.
 
     """

@@ -13,8 +13,8 @@ router = APIRouter()
 def read_zone(zone_name: str, db: Session = Depends(db_connection)):
     """Return zone data in json format
 
-    Args:
-        zone_name: Name of country zone to get information about. It's include departments in.
+    `Args:`\t
+        **zone_name:** Name of country zone to get information about. It's include departments in.
 
     """
     db_zone = crud.get_zone(db, zone_name)

@@ -16,8 +16,8 @@ router = APIRouter()
 def read_departament(dep_name: str, db: Session = Depends(db_connection)):
     """Return departments data in json format.
 
-    Args:
-        dep_name: Name of department to get information about
+    `Args:`\t
+        **dep_name:** Name of department to get information about
 
     """
     db_department = crud.get_department(db, dep_name)
