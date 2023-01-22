@@ -45,7 +45,7 @@ def test_zipcodes():
 
 def test_image_bing():
     """Test status code & get request for images scraper endpoint"""
-    response = client.get("/scraper/images/usulutan")
+    response = client.get("/scraper/images/departments/usulutan")
     assert response.status_code == 200
     assert response.json() != [] or None
 

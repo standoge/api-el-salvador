@@ -44,7 +44,7 @@ rfc3986==1.5.0
 six==1.16.0
 sniffio==1.3.0
 soupsieve==2.3.2.post1
-souvenir-sv==2.0.2
+souvenir-sv==2.1.0
 SQLAlchemy==1.4.46
 starlette==0.22.0
 terminaltables==3.1.10
