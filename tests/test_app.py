@@ -1,8 +1,7 @@
 import pytest
-import sqlalchemy
 from fastapi.testclient import TestClient
 
-from app.internal.db import db_connection, engine
+from app.internal.db import engine
 from app.main import app
 
 client = TestClient(app)
@@ -14,6 +13,7 @@ def test_db():
         engine.connect()
     except:
         assert False, "You're not connected to the database"
+
 
 def test_department():
     """Test status code & get request for dep endpoint"""
