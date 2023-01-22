@@ -22,7 +22,7 @@ def get_zipcodes(dep_name: str):
 
     """
     departament_zipcode = Zipcode(Endpoint[f"{dep_name}"].value)
-    return departament_zipcode.zip_codes
+    return departament_zipcode.codes
 
 
 @router.get(path="/scraper/images/departments/{dep_name}", tags=["SCRAPER"])
