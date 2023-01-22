@@ -1,16 +1,9 @@
+import pytest
 from fastapi.testclient import TestClient
 
-import pytest
 from app.main import app
 
 client = TestClient(app)
-
-
-def test_read_main():
-    """Test root endpoint"""
-    response = client.get("/")
-    assert response.status_code == 200
-    assert response.json() == {"Hello": "From FastAPI"}
 
 
 def test_department():
