@@ -15,8 +15,8 @@ ENDPOINT = os.environ["ENDPOINT"]
 def get_zipcodes(dep_name: str):
     """Return municipalities by department and their zip codes in json format.
 
-    `Args:`\t
-        **dep_name:** Name of department to search zipcodes.\t
+    **Args:**\t
+        `dep_name:` Name of department to search zipcodes.\t
         Incluides zipcodes for all municipalities within the searched department.
 
 
@@ -29,9 +29,9 @@ def get_zipcodes(dep_name: str):
 def get_img_dep(dep_name: str, engine: str = Query(default=None)):
     """Return images url with metadata from Bing or Google engine by department.
 
-    `Args:`\t
-         **dep_name:** Name of department to search images about.\t
-         **engine:** Defaults to Bing. To use Google or official Bing engine you will need an API_KEY.
+    **Args:**\t
+         `dep_name:`Name of department to search images about.\t
+         `engine:`Defaults to Bing. To use Google or official Bing engine you will need an API_KEY.
 
     """
     if engine is not None:
@@ -53,9 +53,9 @@ def get_img_dep(dep_name: str, engine: str = Query(default=None)):
 def get_img_mun(mun_name: str, engine: str = Query(default=None)):
     """Return images url with metadata from Bing or Google engine by municipality.
 
-    `Args:`\t
-         **mun_name:** Name of municipality to search images about.\t
-         **engine:** Defaults to Bing. To use Google or official Bing engine you will need an API_KEY.
+    **Args:**\t
+         `mun_name:`Name of municipality to search images about.\t
+         `engine:`Defaults to Bing. To use Google or official Bing engine you will need an API_KEY.
 
     """
     if engine is not None:

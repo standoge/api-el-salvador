@@ -1,4 +1,4 @@
-""" Postgresql is case sensitive, so we need to use ilike """
+"""Postgresql is case sensitive, so we need to use ilike"""
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
@@ -9,8 +9,6 @@ import app.internal.models as models
 
 class unaccent(ReturnTypeFromArgs):
     """Unaccent function for postgresql"""
-
-    pass
 
 
 def query_encoder(request):

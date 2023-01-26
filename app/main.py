@@ -6,7 +6,7 @@ from app.routers import departments, municipalities, scraper, zones
 
 app = FastAPI()
 app.title = "Maquilishuat"
-app.version = "1.2.0"
+app.version = "1.3.0"
 
 origins = ["*"]
 
