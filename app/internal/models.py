@@ -15,6 +15,10 @@ class Department(Base):
     zone = relationship("Zone", lazy="joined", back_populates="departments")
 
 
+    def __repr__(self):
+        return f"{self.__tablename__} - {self.depname}"
+
+
 class Municipality(Base):
     __tablename__ = "munsv"
 
@@ -23,6 +27,8 @@ class Municipality(Base):
     depsv_id = Column(Integer, ForeignKey("depsv.id"), nullable=False)
     department = relationship("Department", lazy="joined", back_populates="muns")
 
+    def __repr__(self):
+        return f"{self.__tablename__} - {self.munname}"
 
 class Zone(Base):
     __tablename__ = "zonesv"
@@ -30,3 +36,6 @@ class Zone(Base):
     id = Column(Integer, primary_key=True, index=True)
     zonename = Column(String)
     departments = relationship("Department", lazy="joined", back_populates="zone")
+
+    def __repr__(self):
+        return f"{self.__tablename__} - {self.zonename}"
