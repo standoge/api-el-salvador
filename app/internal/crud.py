@@ -2,8 +2,15 @@
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
+from sqlalchemy.sql.functions import ReturnTypeFromArgs
 
 import app.internal.models as models
+
+
+class unaccent(ReturnTypeFromArgs):
+    """Unaccent function for postgresql"""
+
+    pass
 
 
 def query_encoder(request):
@@ -25,10 +32,11 @@ def query_encoder(request):
 @query_encoder
 def get_department(db: Session, dp_name: str):
     """Return the first match with dp_name argument in depsv table."""
+    # fmt: off
     query_response = (
         db.query(models.Department)
         .filter(
-            models.Department.depname.ilike(f"{dp_name}"),
+            unaccent(models.Department.depname).ilike(f"{dp_name}")
         )
         .first()
     )
@@ -39,9 +47,12 @@ def get_department(db: Session, dp_name: str):
 @query_encoder
 def get_municipality(db: Session, mun_name: str):
     """Return the first match with mun_name argument in munsv table."""
+    # fmt: off
     query_response = (
         db.query(models.Municipality)
-        .filter(models.Municipality.munname.ilike(f"{mun_name}%"))
+        .filter(
+            unaccent(models.Municipality.munname).ilike(f"{mun_name}%")
+        )
         .all()
     )
 
@@ -51,11 +62,14 @@ def get_municipality(db: Session, mun_name: str):
 @query_encoder
 def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
     """Return the first match with mun_name in munsv table."""
+    # fmt: off
     query_response = (
         db.query(models.Municipality)
         .filter(
-            models.Municipality.munname.like(f"{mun_name}%"),
-            models.Municipality.department.has(models.Department.depname == dep_name),
+            unaccent(models.Municipality.munname).ilike(f"{mun_name}%"),
+            unaccent(models.Municipality.department).has(
+                unaccent(models.Department.depname) == dep_name
+            )
         )
         .first()
     )
@@ -66,8 +80,13 @@ def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
 @query_encoder
 def get_zone(db: Session, zone_name: str):
     """Return the first match with zone_name argument in zonesv table."""
+    # fmt: off
     query_response = (
-        db.query(models.Zone).filter(models.Zone.zonename) == zone_name.first()
+        db.query(models.Zone)
+        .filter(
+            unaccent(models.Zone.zonename)
+        )
+        == zone_name.first()
     )
 
     return query_response
