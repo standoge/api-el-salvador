@@ -84,9 +84,9 @@ def get_zone(db: Session, zone_name: str):
     query_response = (
         db.query(models.Zone)
         .filter(
-            unaccent(models.Zone.zonename)
+            models.Zone.zonename.ilike(f"{zone_name}")
         )
-        == zone_name.first()
+        .first()
     )
 
     return query_response

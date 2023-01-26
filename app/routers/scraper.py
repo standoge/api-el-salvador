@@ -26,7 +26,7 @@ def get_zipcodes(dep_name: str):
 
 
 @router.get(path="/scraper/images/departments/{dep_name}", tags=["SCRAPER"])
-def get_images(dep_name: str, engine: str = Query(default=None)):
+def get_img_dep(dep_name: str, engine: str = Query(default=None)):
     """Return images url with metadata from Bing or Google engine by department.
 
     `Args:`\t
@@ -50,7 +50,7 @@ def get_images(dep_name: str, engine: str = Query(default=None)):
 
 
 @router.get(path="/scraper/images/municipalities/{mun_name}", tags=["SCRAPER"])
-def get_images(mun_name: str, engine: str = Query(default=None)):
+def get_img_mun(mun_name: str, engine: str = Query(default=None)):
     """Return images url with metadata from Bing or Google engine by municipality.
 
     `Args:`\t
