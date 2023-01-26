@@ -14,7 +14,6 @@ class Department(Base):
     muns = relationship("Municipality", lazy="joined", back_populates="department")
     zone = relationship("Zone", lazy="joined", back_populates="departments")
 
-
     def __repr__(self):
         return f"{self.__tablename__} - {self.depname}"
 
@@ -29,6 +28,7 @@ class Municipality(Base):
 
     def __repr__(self):
         return f"{self.__tablename__} - {self.munname}"
+
 
 class Zone(Base):
     __tablename__ = "zonesv"
