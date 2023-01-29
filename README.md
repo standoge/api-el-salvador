@@ -19,7 +19,7 @@ Install dependencies:
 pip install -r requirements
 ```
 
-> Check wiki section for tecnical information 
+> Check wiki section for technical information 
 
 ### Test:
 
