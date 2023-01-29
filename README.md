@@ -2,7 +2,7 @@
 
 # Departments and Municipalities of El Salvador
 
-An API to make queries about El Salvador departaments and its municipalities, incluiding their zip codes developed with [FastAPI](https://fastapi.tiangolo.com/). This is used for [api-el-salvador-ui](https://github.com/caeher/api-El-Salvador-UI) as backend.
+An API to make queries about El Salvador departaments and its municipalities, incluides resources like zip-codes,iso-codes and images. Developed with [FastAPI](https://fastapi.tiangolo.com/). This is used for [api-el-salvador-ui](https://github.com/caeher/api-El-Salvador-UI) as backend.
 
 ## How to use :ringed_planet:
 You can consume it from this [url](https://api-sv-maquilishuat.herokuapp.com/). Just check the documentation at the `/docs` endpoint to learn how to use it and its endpoints.
@@ -19,7 +19,7 @@ Install dependencies:
 pip install -r requirements
 ```
 
-> It uses `pymysql` as a connector for `MySQL` scripts with El Salvador information, so remember to change the `DB_HOST` variable content in `internal/db.py` file to your instance of MySQL with that connector.
+> Check wiki section for tecnical information 
 
 ### Test:
 
