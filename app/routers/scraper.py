@@ -1,6 +1,6 @@
 import os
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter
 from souvenir.image import ImageBing
 from souvenir.zipcode import Endpoint, Zipcode
 
@@ -23,8 +23,8 @@ def get_zipcodes(dep_name: str):
 
 
 @router.get(path="/scraper/images/departments/{dep_name}", tags=["SCRAPER"])
-def get_img_dep(dep_name: str, engine: str = Query(default=None)):
-    """Return images url with metadata from Bing or Google engine by department.
+def get_img_dep(dep_name: str):
+    """Return images url with metadata from Bing engine by department.
 
     **Args:**\t
          `dep_name:`Name of department to search images about.\t
@@ -34,8 +34,8 @@ def get_img_dep(dep_name: str, engine: str = Query(default=None)):
 
 
 @router.get(path="/scraper/images/municipalities/{mun_name}", tags=["SCRAPER"])
-def get_img_mun(mun_name: str, engine: str = Query(default=None)):
-    """Return images url with metadata from Bing or Google engine by municipality.
+def get_img_mun(mun_name: str):
+    """Return images url with metadata from Bing engine by municipality.
 
     **Args:**\t
          `mun_name:`Name of municipality to search images about.\t
