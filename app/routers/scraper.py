@@ -29,7 +29,7 @@ def get_img_dep(dep_name: str, engine: str = Query(default=None)):
     **Args:**\t
          `dep_name:`Name of department to search images about.\t
     """
-    results = ImageBing(f"{dep_name} departamento").images
+    results = ImageBing(f"{dep_name} departamento", A_KEY, ENDPOINT).images
     return results
 
 
@@ -40,5 +40,5 @@ def get_img_mun(mun_name: str, engine: str = Query(default=None)):
     **Args:**\t
          `mun_name:`Name of municipality to search images about.\t
     """
-    results = ImageBing(f"{mun_name} municipio").images
+    results = ImageBing(f"{mun_name} municipio", A_KEY, ENDPOINT).images
     return results
