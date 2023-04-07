@@ -50,11 +50,3 @@ def test_image_bing():
     response = client.get("/scraper/images/departments/usulutan")
     assert response.status_code == 200
     assert response.json() != [] or None
-
-
-@pytest.mark.skip(reason="This test consume request attempts")
-def test_images_google():
-    """Test status code & get request for images scraper endpoint"""
-    response = client.get("/scraper/images/usulutan&engine=google")
-    assert response.status_code == 200
-    assert response.json() != [] or None
