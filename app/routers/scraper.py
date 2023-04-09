@@ -4,13 +4,19 @@ from fastapi import APIRouter
 from souvenir.image import ImageBing
 from souvenir.zipcode import Endpoint, Zipcode
 
+from app.internal.schemas import Zipzip
+
 router = APIRouter()
 
 A_KEY = os.environ["A_KEY"]
 ENDPOINT = os.environ["ENDPOINT"]
 
 
-@router.get(path="/scraper/zipcodes/{dep_name}", tags=["SCRAPER"])
+@router.get(
+    path="/scraper/zipcodes/{dep_name}",
+    tags=["SCRAPER"],
+    responses={200: {"model": Zipzip}},
+)
 def get_zipcodes(dep_name: str):
     """Return municipalities by department and their zip codes in json format.
 

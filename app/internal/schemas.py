@@ -65,3 +65,37 @@ class Zone(BaseModel):
                 ],
             }
         }
+
+
+class Zipzip(BaseModel):
+    depname: str
+
+    class Config:
+        orm_mode = True
+        schema_extra = {
+            "example": {
+                "Antiguo Cuscatlán": "01502",
+                "Chiltiupán": "01507",
+                "Ciudad Arce": "01504",
+                "Colón": "01512",
+                "Comasagua": "01506",
+                "Huizúcar": "01508",
+                "Jayaque": "01509",
+                "Jicalapa": "01510",
+                "La Libertad": "01511",
+                "Santa Tecla\nAntes: Nueva San Salvador": "01501",
+                "Nuevo Cuscatlán": "01513",
+                "San Juan Opico": "01514",
+                "Quezaltepeque": "01515",
+                "Sacacoyo": "01516",
+                "San José Villanueva": "01517",
+                "San Matías": "01518",
+                "San Pablo Tacachico": "01519",
+                "Talnique": "01521",
+                "Tamanique": "01522",
+                "Teotepeque": "01523",
+                "Tepecoyo": "01524",
+                "Zaragoza": "01525",
+                "Summary": "San Salvador es un departamento fundado en 1865 ubicado en la Zona Central de El Salvador. Posee 3 distritos y 22 municipios.",
+            }
+        }
