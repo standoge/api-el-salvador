@@ -1,8 +1,14 @@
+CREATE TABLE zonesv (
+    id INTEGER PRIMARY KEY,
+    zonename VARCHAR(15) NOT NULL
+);
+
 CREATE TABLE depsv (
     id INTEGER PRIMARY KEY,
     depname VARCHAR(30) NOT NULL,
     isocode CHAR(5) NOT NULL,
-    zonesv_id INTEGER NOT NULL
+    zonesv_id INTEGER NOT NULL,
+    FOREIGN KEY (zonesv_id) REFERENCES zonesv(id)
 );
 
 CREATE TABLE munsv (
@@ -10,11 +16,6 @@ CREATE TABLE munsv (
     munname VARCHAR(100) NOT NULL,
     depsv_id INTEGER NOT NULL,
     FOREIGN KEY (depsv_id) REFERENCES depsv(id)
-);
-
-CREATE TABLE zonesv (
-    id INTEGER PRIMARY KEY,
-    zonename VARCHAR(15) NOT NULL
 );
 
 INSERT INTO zonesv (id, zonename) VALUES
@@ -301,5 +302,3 @@ INSERT INTO munsv (id, munname, depsv_id) VALUES
 (259, 'Tecoluca', 10),
 (260, 'Tepetitán', 10),
 (261, 'Verapaz', 10);
-
-CREATE INDEX idx_depsv_id ON munsv (depsv_id);
