@@ -41,7 +41,7 @@ def test_zipcodes():
     """Test status code & get request for zipcodes scraper endpoint"""
     response = client.get("/scraper/zipcodes/la_paz")
     assert response.status_code == 200
-    assert response.json()["Zacatecoluca"] == "01601"
+    assert response.json()["Zacatecoluca"] == "CP 1601"
 
 
 def test_image_bing():
