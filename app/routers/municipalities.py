@@ -20,7 +20,7 @@ def read_municipality(
     db: Session = Depends(db_connection),
     departament: Optional[str] = Query(default=None, min_length=6, max_length=12),
 ):
-    """Return municipalities data in json format.
+    """Return municipalities data in json format. Tildes are required.
 
     **Parameters:**\t
         `mun_name:` Name of municipalitie to get information about.\t
