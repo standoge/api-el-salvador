@@ -24,7 +24,7 @@ def test_department():
 
 def test_municipality():
     """Test status code & get request for mun endpoint"""
-    response = client.get("/municipalities/Colon")
+    response = client.get("/municipalities/Colón")
     assert response.status_code == 200
     # here reponse.json() is an array, so is needed specify by index as first element
     assert response.json()[0]["munname"] == "Colón"
