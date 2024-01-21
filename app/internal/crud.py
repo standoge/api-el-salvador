@@ -3,6 +3,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 
+
 import app.internal.models as models
 
 
@@ -45,6 +46,7 @@ def get_municipality(db: Session, mun_name: str):
         db.query(models.Municipality)
         .filter(
             models.Municipality.munname.ilike(f"{mun_name}%")
+
         )
         .all()
     )
