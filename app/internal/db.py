@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 DATABASE = "el_salvador.db"
-engine = create_engine("sqlite:///./el_salvador.db")
+engine = create_engine(f"sqlite:///{DATABASE}")
 
 # upper 'cause returns a class
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
