@@ -1,12 +1,10 @@
-import os
-
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DB_HOST = os.environ["DB_HOST"]
-
-engine = create_engine(DB_HOST, client_encoding="utf8")
+DATABASE = "./el_salvador.db"
+# this relative path isn't from this file, is from project root
+engine = create_engine(f"sqlite:///{DATABASE}")
 
 # upper 'cause returns a class
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

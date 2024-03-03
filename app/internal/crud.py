@@ -2,13 +2,9 @@
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
-from sqlalchemy.sql.functions import ReturnTypeFromArgs
+
 
 import app.internal.models as models
-
-
-class unaccent(ReturnTypeFromArgs):
-    """Unaccent function for postgresql"""
 
 
 def query_encoder(request):
@@ -34,7 +30,7 @@ def get_department(db: Session, dp_name: str):
     query_response = (
         db.query(models.Department)
         .filter(
-            unaccent(models.Department.depname).ilike(f"{dp_name}")
+            models.Department.depname.ilike(f"{dp_name}")
         )
         .first()
     )
@@ -49,7 +45,8 @@ def get_municipality(db: Session, mun_name: str):
     query_response = (
         db.query(models.Municipality)
         .filter(
-            unaccent(models.Municipality.munname).ilike(f"{mun_name}%")
+            models.Municipality.munname.ilike(f"{mun_name}%")
+
         )
         .all()
     )
@@ -64,9 +61,9 @@ def get_municipality_by_dep(db: Session, mun_name: str, dep_name: str):
     query_response = (
         db.query(models.Municipality)
         .filter(
-            unaccent(models.Municipality.munname).ilike(f"{mun_name}%"),
-            unaccent(models.Municipality.department).has(
-                unaccent(models.Department.depname) == dep_name
+            models.Municipality.munname.ilike(f"{mun_name}%"),
+            models.Municipality.department.has(
+                models.Department.depname == dep_name
             )
         )
         .first()

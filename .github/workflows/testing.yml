@@ -3,7 +3,7 @@ name: Test API
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "development" ]
 
 permissions:
   contents: read

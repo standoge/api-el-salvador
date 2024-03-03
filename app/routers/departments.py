@@ -14,9 +14,9 @@ router = APIRouter()
     tags=["DEPARTMENTS"],
 )
 def read_departament(dep_name: str, db: Session = Depends(db_connection)):
-    """Return departments data in json format.
+    """Return departments data in json format. Tildes are required.
 
-    **Args:**\t
+    **Parameters:**\t
         `dep_name:` Name of department to get information about
 
     """
