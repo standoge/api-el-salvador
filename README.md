@@ -1,4 +1,4 @@
-[![Test API](https://github.com/standoge/api-El-Salvador/actions/workflows/testing.yml/badge.svg)](https://github.com/standoge/api-El-Salvador/actions/workflows/testing.yml)
+[![Test API](https://github.com/standoge/api-el-salvador/actions/workflows/testing.yml/badge.svg?branch=development)](https://github.com/standoge/api-el-salvador/actions/workflows/testing.yml)
 
 # Departments and Municipalities of El Salvador
 
